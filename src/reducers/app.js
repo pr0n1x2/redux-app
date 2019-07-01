@@ -1,5 +1,6 @@
 const initialState = {
     isOnline: true,
+    name: 'test',
 };
 
 const reducer = (state = initialState, action) => {

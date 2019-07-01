@@ -1,26 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './styles.modules.scss';
 
-function MainPage() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class MainPage extends  Component {
+  render() {
+    const { appName } = this.props;
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo"/>
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+              className="App-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+          <div>!!{appName}!!</div>
+        </header>
+      </div>
+    );
+  }
 }
 
-export default MainPage;
+MainPage.propTypes = {
+  appName: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = state => ({
+  appName: state.app.name,
+});
+
+const mapDispatchToProps = dispatch => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
