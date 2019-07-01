@@ -5,8 +5,15 @@ import logo from './logo.svg';
 import './styles.modules.scss';
 
 class MainPage extends  Component {
+
+  handlerChange = (ev) => {
+    const { value } = ev.target;
+    console.log(value);
+  };
+
   render() {
     const { appName } = this.props;
+    const { handlerChange } = this;
 
     return (
       <div className="App">
@@ -24,6 +31,11 @@ class MainPage extends  Component {
             Learn React
           </a>
           <div>!!{appName}!!</div>
+          <input
+              type="text"
+              value={appName}
+              onChange={handlerChange}
+          />
         </header>
       </div>
     );
